@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.7.0 <0.9.0;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
+
 import "./IERC20VotableToken.sol";
 
-contract TokenizedBallot {
+contract TokenizedBallot is Ownable {
     uint256 public referenceBlock;
     IERC20VotableToken public tokenContract;
 
@@ -25,6 +27,10 @@ contract TokenizedBallot {
         }
         tokenContract = IERC20VotableToken(_tokenContract);
         referenceBlock = _referenceBlock;
+    }
+
+    function setReferenceToken(uint256 _newReferenceBlock) external onlyOwner {
+        referenceBlock = _newReferenceBlock;
     }
 
     function vote(uint256 proposal, uint256 amount) public {
