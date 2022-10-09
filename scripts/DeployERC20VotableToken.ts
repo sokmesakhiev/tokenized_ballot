@@ -17,15 +17,7 @@ async function main() {
   const erc20VotableTokenContractFactory = new ERC20VotableToken__factory(
     signer
   );
-  const erc20VotableTokenContract =
-    await erc20VotableTokenContractFactory.deploy(TOKEN_RATIO);
-  await erc20VotableTokenContract.deployed();
-
-  console.log(
-    `MyToken contract was deployed at address ${erc20VotableTokenContract.address}`
-  );
-<<<<<<< HEAD
-=======
+  const erc20VotableTokenContract = await erc20VotableTokenContractFactory.deploy(TOKEN_RATIO);
   await erc20VotableTokenContract.deployed();
 
   console.log(
@@ -36,7 +28,6 @@ async function main() {
   console.log(
     `At deployment acc1 has a voting power of ${initialVotes} vote\n`
   );
->>>>>>> 60bfc9f (WIP DeployERC20VotableToken)
 }
 
 main().catch((error) => {
