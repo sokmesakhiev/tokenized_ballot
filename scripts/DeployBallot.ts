@@ -2,8 +2,6 @@ import { ethers } from "hardhat";
 import { TokenizedBallot__factory } from "../typechain-types";
 
 async function main() {
-  
-
   const PROPOSALS = ["Proposal 1", "Proposal 2", "Proposal 3"];
   const bytes32Array = PROPOSALS.map((prop) =>
     ethers.utils.formatBytes32String(prop)
