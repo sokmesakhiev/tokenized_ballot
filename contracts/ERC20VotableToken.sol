@@ -18,11 +18,9 @@ contract ERC20VotableToken is Ownable {
 
     constructor(
         uint256 _ratio,
-        uint256 _price,
         address _paymentToken
     ) {
         ratio = _ratio;
-        price = _price;
         paymentToken = IMyERC20Token(_paymentToken);
     }
 
