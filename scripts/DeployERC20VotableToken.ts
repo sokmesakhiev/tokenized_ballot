@@ -17,12 +17,21 @@ async function main() {
   const erc20VotableTokenContractFactory = new ERC20VotableToken__factory(
     signer
   );
-  const erc20VotableTokenContract =
-    await erc20VotableTokenContractFactory.deploy(TOKEN_RATIO);
+  const erc20VotableTokenContract = await erc20VotableTokenContractFactory.deploy(TOKEN_RATIO);
   await erc20VotableTokenContract.deployed();
 
   console.log(
     `MyToken contract was deployed at address ${erc20VotableTokenContract.address}`
+  );
+  await erc20VotableTokenContract.deployed();
+
+  console.log(
+    `MyToken contract was deployed at address ${erc20VotableTokenContract.address}`
+  );
+
+  const initialVotes = await myTokenContract.getVotes(acc1.address);
+  console.log(
+    `At deployment acc1 has a voting power of ${initialVotes} vote\n`
   );
 }
 
