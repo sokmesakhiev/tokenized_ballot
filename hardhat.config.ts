@@ -21,7 +21,7 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
-  },
+  }
 };
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
