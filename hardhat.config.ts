@@ -1,11 +1,10 @@
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
-require('dotenv').config();
+require("dotenv").config();
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 
-const { API_URL, PRIVATE_KEY } = process.env;
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const { API_URL, PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 
 const config: HardhatUserConfig = {
   solidity: "0.8.7",
@@ -21,8 +20,8 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    apiKey: ETHERSCAN_API_KEY
-  }
+    apiKey: ETHERSCAN_API_KEY,
+  },
 };
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
