@@ -13,7 +13,16 @@ async function main() {
     TOKEN_RATIO,
     ERC20_TOKEN_ADDRESS
   );
-  await tokensaleContract.deployed();
+  await erc20VotableTokenContract.deployed();
+
+  console.log(
+    `MyToken contract was deployed at address ${erc20VotableTokenContract.address}`
+  );
+
+  const initialVotes = await myTokenContract.getVotes(acc1.address);
+  console.log(
+    `At deployment acc1 has a voting power of ${initialVotes} vote\n`
+  );
 }
 main().catch((error) => {
   console.error(error);
