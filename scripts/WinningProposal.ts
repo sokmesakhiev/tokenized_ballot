@@ -13,7 +13,7 @@ async function main() {
     return;
   }
 
-  const TOKENIZED_BALLOT = '0xdb96DE67554A7766C3b4Dc6c4AaC06eB1aeBF697';
+  const TOKENIZED_BALLOT = process.env.TOKENIZED_BALLOT;
 
   if (!TOKENIZED_BALLOT) {
     console.error("TOKENIZED_BALLOT not set in env");

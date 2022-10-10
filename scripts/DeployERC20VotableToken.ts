@@ -24,9 +24,9 @@ async function main() {
     `MyToken contract was deployed at address ${erc20VotableTokenContract.address}`
   );
 
-  const initialVotes = await myTokenContract.getVotes(acc1.address);
+  const initialVotes = await erc20VotableTokenContract.getVotes(signer.address);
   console.log(
-    `At deployment acc1 has a voting power of ${initialVotes} vote\n`
+    `At deployment ${signer.address} has a voting power of ${initialVotes} vote\n`
   );
 }
 

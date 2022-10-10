@@ -126,19 +126,23 @@ describe("ERC20VotableToken Contract Test", () => {
         accounts[0].address,
         (
           await ethers.provider.getBlock("latest")
-        ).number -1 
+        ).number -1
       );
       console.log(vote1AfterVoting);
 
       const proposal1Status = await tokenizedBallot.proposals(0);
       console.log(proposal1Status);
 
-      // Try to vote with same address again 
+      // Try to vote with same address again
       await expect(tokenizedBallot.connect(accounts[0]).vote(0, vote1)).to.be.reverted;
-            
+
       const spendVotingPower = await tokenizedBallot.votingPowerSpent(accounts[0].address);
       expect(spendVotingPower).to.be.eq(vote1);
 
+      // Get the winner
+      const winner = await tokenizedBallot.winningProposal();
+      const winnerName = await tokenizedBallot.winnerName();
+      expect(ethers.utils.parseBytes32String(winnerName)).to.be.eq(PROPOSALS[winner.toNumber()])
     });
   });
 });
